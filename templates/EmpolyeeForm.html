@@ -1,0 +1,16 @@
+<div class="employeeForm" myDirective>
+    <form name="" method="post">
+        <h3>Employee Data</h3>
+        <h4>Please fill employee data</h4>
+        <br/>
+
+        <div class="form-group">
+            <button type="button" id="employeeFormBtn" name="employeeForm" ng-disabled="Loading" ui-sref="engineerForm" ng-click="createObject()" class="btn btn-info">Employee Form</button>
+        </div>
+
+        <!-- loader-->
+        <span class="loader col-md-12 col-sm-12 col-xs-12">
+        <img ng-if="Loading" src="./assets/images/loader.gif" width="40px" height="40px" id="loaderimg" />
+        </span>
+    </form>
+</div>

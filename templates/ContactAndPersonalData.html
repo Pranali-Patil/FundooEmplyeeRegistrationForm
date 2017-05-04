@@ -1,0 +1,102 @@
+<div class="card frame">
+    <div class="card-block">
+        <!-- Form Name -->
+        <div class="formName">Personal Data</div>
+        <hr/>
+        <p>Please enter the contact information</p>
+        <form name="contactAndPersonalDataForm" method="post">
+
+            <!-- Date of birth-->
+            <div class="form-group required">
+                <label class="control-label">Date of Birth(DD/MM/YYYY)</label><br/>
+                <div id="sandbox-container">
+                    <input type="text" class="" ng-model="birthDate" placeholder="dd/mm/yyyy" required="" />
+                </div>
+            </div><br/>
+
+
+            <!-- Relative's Name-->
+            <div class="form-group required">
+                <label class="control-label">Relative's Name</label><br/>
+                <div class="">
+                    <input id="fatherName" class="" ng-model="Name" name="Name" autocomplete="off" type="text" placeholder="Name"/><br/>
+                </div>
+            </div><br/>
+
+            <!-- Relative's Relation-->
+            <div class="form-group required">
+                <label class="control-label">Relation</label><br/>
+                <div class="">
+                    <input id="Relation" class="" ng-model="Relation" name="Relation" autocomplete="off" type="text" placeholder="Relation"/><br/>
+                </div>
+            </div><br/>
+
+            <!-- Relative's Mobile no-->
+            <div class="form-group required">
+                <label class="control-label">Relative's Mobile Number</label><br/>
+                <p>Please Enter your Relative's or any Other Permanent Number</p>
+                <div class="">
+                    <input id="fatherMobileNumber" class="" ng-model="MobileNumber" name="MobileNumber" autocomplete="off" type="text" placeholder="Mobile Number" ng-pattern="/^[7-9][0-9]{9}$/" /><br/>
+                    <p ng-show="contactAndPersonalDataForm.MobileNumber.$error.pattern" style="color:red;">Please enter valid mobile number</p>
+                </div>
+            </div><br/>
+
+            <!--Father Occupation-->
+            <div class="form-group required">
+                <label class="control-label">Relative's Occupation</label><br/>
+                <div class="">
+                    <input id="fatherOccupation" class="" ng-model="Occupation" name="Occupation" type="text" placeholder="Occupation" autocomplete="off"/>
+                </div>
+            </div><br/>
+
+            <!-- Annual Salary-->
+            <div class="form-group required">
+                <label class="control-label ">Annual Salary(p.a.)</label><br/>
+                <div id="radio1" class="">
+                    <input type="radio" ng-model="annualSalary" value="0-5 lacs" /> &#160;&#160;0-5 Lacs<br/>
+                    <input type="radio" ng-model="annualSalary" value="5-10 lacs" /> &#160;&#160;5-10 Lacs<br/>
+                    <input type="radio" ng-model="annualSalary" value=">10 lacs" /> &#160;&#160;>10 Lacs
+                </div>
+            </div><br/>
+
+            <!-- Current address-->
+            <div class="form-group required">
+                <label class="control-label">Current Address</label><br/>
+                <p>If staying in Ashok PG Accomodation in vashi. Mention the same as Address</p>
+                <div class="">
+                    <textarea id="currentAddress" class="" ng-model="currentAddress" name="currentAddress" autocomplete="off" placeholder="enter address here.." required=""></textarea>
+                </div>
+            </div>
+
+            <!-- Save as above-->
+            <div class="form-group">
+                <label class=" control-label"></label>
+                <input id="check" type="checkbox" ng-model="hasChecked" ng-click="sameAsAbove()" /> same as above
+            </div>
+
+            <!-- Permanant address-->
+            <div class="form-group ">
+                <label class="control-label">Permanant Address</label><br/>
+                <div class="">
+                    <textarea id="permanantAddress" class="" ng-model="permanantAddress" autocomplete="off" name="permanantAddress" placeholder="enter address here.."></textarea>
+                </div>
+            </div><br/><br/>
+
+            <div class="form-group">
+                <!-- Previous-->
+                <div id="prev" class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+                    <button class="btn btn-info" ui-sref="qualificationData">Previous</button>
+                </div>
+                <!-- Submit-->
+                <div id="next" class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+                    <button class="btn btn-info" ng-click="storeData(picFile)" ng-disabled="!annualSalary||contactAndPersonalDataForm.$invalid||Loading">Submit</button>
+                </div>
+            </div>
+
+            <!-- loader-->
+            <span class="loader col-md-12 col-sm-12 col-xs-12">
+            <img ng-if="Loading" src="./assets/images/loader.gif" width="40px" height="40px" id="loaderimg" />
+            </span>
+        </form>
+    </div>
+</div>

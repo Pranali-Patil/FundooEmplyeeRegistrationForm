@@ -1,0 +1,64 @@
+<div class="card frame">
+    <div class="card-block">
+        <!-- Form Name -->
+        <div class="formName">Bank Information</div>
+        <hr/>
+        <p>This information is needed to deposit monthly stipend </p>
+        <form name="bankInfoForm" method="post">
+
+            <!-- Pan-->
+            <div class="form-group required">
+                <label class="control-label ">PAN</label><br/>
+                <p>Please insure to fill proper PAN number</p>
+                <div class="">
+                    <input id="panNo" class="" style="text-transform:uppercase" name="panNo" ng-model="panNo" type="text" autocomplete="off" placeholder="pan" ng-pattern="/[A-Za-z]{5}\d{4}[A-Za-z]{1}/" required="" /><br/>
+                    <p ng-show="bankInfoForm.panNo.$error.pattern" style="color:red;">Invalid pan no</p>
+                </div>
+            </div><br/>
+
+            <!-- Bank Name-->
+            <div class="form-group required">
+                <label class="control-label ">Bank Name</label><br/>
+                <p>Please Double Check the stipend will be transferred to this Bank Account</p>
+                <div class="">
+                    <input id="bankName" class="" ng-model="bankName" name="bankName" type="text" placeholder="bank name" autocomplete="off" required="" />
+                </div>
+            </div><br/>
+
+            <!-- Bank Account Number-->
+            <div class="form-group required">
+                <label class="control-label ">Bank Account Number</label><br/>
+                <p>Same as in the Cheque Book</p>
+                <div class="">
+                    <input id="accountNumber" class="" ng-model="accountNumber" name="accountNumber" type="text" autocomplete="off" placeholder="account number" ng-pattern="/^[1-9]\d*$/" required="" /><br/>
+                    <p ng-show="bankInfoForm.accountNumber.$error.pattern" style="color:red;">Invalid account number</p>
+                </div>
+            </div><br/>
+
+            <!-- Bank IFSC code-->
+            <div class="form-group required">
+                <label class="control-label ">Bank IFSC Code</label><br/>
+                <p>You eill find this in Cheque Book. Please double check</p>
+                <div class="">
+                    <input id="bankIfscCode" class="" ng-model="bankIfscCode" name="bankIfscCode" autocomplete="off" type="text" placeholder="ifsc Code" required="" />
+                </div>
+            </div><br/><br/>
+
+            <div class="form-group">
+                <!-- Previous-->
+                <div id="prev" class="col-md-6 col-sm-6 col-xs-6">
+                    <button class="btn btn-info" ui-sref="engineerForm">Previous</button>
+                </div>
+                <!-- Next-->
+                <div id="next" class="col-md-6 col-sm-6 col-xs-6">
+                    <button class="btn btn-info" ui-sref="qualificationData" ng-disabled="bankInfoForm.$invalid||Loading" ng-click="next()">Next</button>
+                </div>
+            </div>
+
+            <!-- loader-->
+            <span class="loader col-md-12 col-sm-12 col-xs-12">
+            <img ng-if="Loading" src="./assets/images/loader.gif" width="40px" height="40px" id="loaderimg" />
+            </span>
+        </form>
+    </div>
+</div>

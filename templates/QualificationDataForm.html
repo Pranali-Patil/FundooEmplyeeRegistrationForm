@@ -1,0 +1,108 @@
+<div class="card frame">
+    <div class="card-block">
+        <!-- Form Name -->
+        <div class="formName">Qualification Data</div>
+        <hr/>
+        <p>Please fill in all your qualification including your training</p>
+        <form name="qualificationData" method="post">
+
+            <!-- isDiploma -->
+            <div class="form-group required">
+                <label class="control-label">Diploma</label><br/>
+                <div id="radio1" class="">
+                    <input type="radio" ng-model="diploma" value="1" /> &#160;&#160;Yes<br/>
+                    <input type="radio" ng-model="diploma" value="0" /> &#160;&#160;No
+                </div>
+            </div>
+
+            <!-- isDegree-->
+            <div class="form-group required">
+                <label class="control-label">Degree</label><br/>
+                <div id="radio1" class="">
+                    <input type="radio" ng-model="degree" value="1" /> &#160;&#160;Yes<br/>
+                    <input type="radio" ng-model="degree" value="0" /> &#160;&#160;No
+                </div>
+            </div>
+
+            <!-- Qualification-->
+            <div class="form-group required">
+                <label class="control-label">Qualification</label><br/>
+                <div id="radio1" class="">
+                    <input type="radio" ng-model="qualification" value="BE" /> &#160;&#160;BE
+                    <input type="radio" ng-model="qualification" value="ME" /> &#160;&#160;ME
+                    <input type="radio" ng-model="qualification" value="MCA" /> &#160;&#160;MCA
+                    <input type="radio" ng-model="qualification" value="Other" /> &#160;&#160;Other
+                </div>
+            </div>
+
+            <!-- Discipline-->
+            <div class="form-group required">
+                <label class="control-label">Discipline</label><br/>
+                <div class="">
+                    <input type="list" class="" list="dList" ng-model="selectedDiscipline" placeholder="discipline" name="browser" autocomplete="off" required="" />
+                    <datalist id="dList">
+                      <option ng-repeat="names in disciplineList" value="{{names}}">{{names}}</option>
+                    </datalist>
+                </div>
+            </div><br/>
+
+            <!-- Year of passing-->
+            <div class="form-group required">
+                <label class="control-label">Year Of Passing</label><br/>
+                <select ng-model="yearOfPassing" id="year" class="form-group" required="">
+           <option ng-repeat="option in yearOptions" value="{{option}}">{{option}}</option>
+        </select>
+            </div>
+
+            <!-- Aggregate-->
+            <div class="form-group required">
+                <label class="control-label">Percentage Aggregate(%)</label><br/>
+                <div class="">
+                    <input class="" id="aggregate" ng-model="aggregate" name="aggregate" autocomplete="off" type="text" placeholder="aggregate" required="" ng-pattern="/^[+-]?\d+(\.\d+)?$/" /><br/>
+                    <span ng-show="qualificationData.aggregate.$error.pattern" style="color:red;">Aggregate should contain numbers only</span>
+                </div>
+            </div><br/>
+
+            <!-- Training institute-->
+            <div class="form-group required">
+                <label class="control-label">Training Institute</label>
+                <div class="">
+                    <input id="trainingInstitute" ng-model="trainingInstitute" name="trainingInstitute" autocomplete="off" type="text" placeholder="training institute" required="" />
+                </div>
+            </div><br/>
+
+            <!-- Training duration-->
+            <div class="form-group required">
+                <label class="control-label">Please Enter Training Duration in Months</label>
+                <div class="">
+                    <input id="trainingDuration" ng-model="trainingDuration" name="trainingDuration" autocomplete="off" type="text" placeholder="duration of training" ng-pattern="/^[0-9]*$/" required="" /><br/>
+                    <span ng-show="qualificationData.trainingDuration.$error.pattern" style="color:red;">Enter no. of months in numbers </span>
+                </div>
+            </div><br/>
+
+            <!-- Training-->
+            <div class="form-group required">
+                <label class="control-label">Please Enter All your Trainings</label>
+                <div class="">
+                    <input id="training" name="training" ng-model="training" type="text" autocomplete="off" placeholder="technologies" required="" />
+                </div>
+            </div><br/><br/>
+
+            <div class="form-group">
+                <!-- Previous-->
+                <div id="prev" class="col-md-6 col-sm-6 col-xs-6">
+                    <button class="btn btn-info" ui-sref="bankInfoForm">Previous</button>
+                </div>
+                <!-- Next-->
+                <div id="next" class="col-md-6 col-sm-6 col-xs-6">
+                    <button class="btn btn-info" ui-sref="contactAndPersonalData" ng-disabled="!diploma||!degree||qualificationData.$invalid||Loading" ng-click="next()">Next</button>
+                </div>
+            </div>
+
+            <!-- loader-->
+            <span class="loader col-md-12 col-sm-12 col-xs-12">
+            <img ng-if="Loading" src="./assets/images/loader.gif" width="40px" height="40px" id="" />
+            </span>
+        </form>
+    </div>
+</div>

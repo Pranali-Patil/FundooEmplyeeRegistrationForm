@@ -1,0 +1,49 @@
+<div class="card frame">
+    <div class="card-block">
+        <!-- Form Name -->
+        <div class="heading1">Employee Data</div>
+        <hr/>
+        <p>Please carefully read all the Data. These are required for HR, Finance and other obligations</p>
+        <form name="engineerForm" method="post">
+
+            <!-- Name-->
+            <div class="form-group required">
+                <label class="control-label">Name</label><br/>
+                <p>This has to be same as it appears in PAN</p>
+                <div class="">
+                    <input id="name" class="" ng-model="name" name="name" type="text" placeholder="Firstname Middlename Lastname" autocomplete="off" required="" />
+                </div>
+            </div><br/>
+
+            <!-- Mobile-->
+            <div class="form-group required">
+                <label class="control-label">Mobile Number</label><br/>
+                <div class="">
+                    <input id="mobileNumber" class="" ng-model="mobileNumber" name="mobileNumber" type="text" autocomplete="off" placeholder="Mobile Number" required="" ng-pattern="/^[7-9][0-9]{9}$/" /><br/>
+                    <p ng-show="engineerForm.mobileNumber.$error.pattern" style="color:red;">Please enter valid mobile number</p>
+                </div>
+            </div><br/>
+
+            <!-- Email-->
+            <div class="form-group required">
+                <label class="control-label">Email Id</label><br/>
+                <div class="">
+                    <input id="emailId" class="" ng-model="emailId" type="email" placeholder="john@green.com" autocomplete="off"/>
+                </div>
+            </div><br/>
+
+
+            <div class="form-group ">
+                <!-- Next-->
+                <div id="next" class="col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info" ui-sref="bankInfoForm" ng-disabled="engineerForm.$invalid||Loading" ng-click="next()">Next</button>
+                </div>
+            </div>
+
+            <!-- loader-->
+            <span class="loader col-md-12 col-sm-12 col-xs-12">
+            <img ng-if="Loading" src="./assets/images/loader.gif" width="40px" height="40px" id="loaderimg" />
+            </span>
+        </form>
+    </div>
+</div>
