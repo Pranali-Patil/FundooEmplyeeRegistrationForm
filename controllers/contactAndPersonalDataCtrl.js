@@ -15,7 +15,7 @@ angular.module('fundooApp')
             } else {
                 $scope.permanantAddress = "";
             }
-        }
+        };
 
         /*jQuery for showing datepicker*/
         $('#sandbox-container input').datepicker({
@@ -70,12 +70,14 @@ angular.module('fundooApp')
 
         $(document).ready(function() {
             function disableBack() {
-                window.history.forward()
+                window.history.forward();
             }
             $(this).scrollTop(0);
             window.onload = disableBack();
             window.onpageshow = function(evt) {
-                if (evt.persisted) disableBack()
-            }
+                if (evt.persisted) {
+                    disableBack();
+                }
+            };
         });
     });
